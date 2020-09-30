@@ -9,29 +9,44 @@ class App extends React.Component {
     super();
     this.state = {
       myData: [],
-      myFollowers: [],
+      myFollowersUrls: [],
+      myFollowersData: [],
       followersToggled: false,
     }
   }
 
   componentDidMount() {
-    axios.get('https://api.github.com/users/starullo')
-    .then(res=>{
-      this.setState({
-        myData: res.data,
-      });
+this.getData();
+};
+
+getData = async () => {
+  await axios.get('https://api.github.com/users/starullo')
+  .then(res=>{
+    this.setState({
+      myData: res.data,
+    })
+  });
+  await axios.get('https://api.github.com/users/starullo/followers')
+  .then(res=>{
+    this.setState({
+      myFollowersUrls: res.data.map(obj=>{
+        return obj.login
+      })
     });
-    axios.get('https://api.github.com/users/starullo/followers')
-    .then(data=>{
-      this.setState({
-        myFollowers: data.data
+    return this.state.myFollowersUrls
+  })
+  .then(urls=>{
+    urls.forEach(url=>{
+      axios.get(`https://api.github.com/users/${url}`)
+      .then(res=>{
+        console.log(res)
+        this.setState({
+          myFollowersData: [...this.state.myFollowersData, res.data]
+        })
       });
-    });
-
-
-
-  };
-
+    })
+    })
+}
   toggleFollowers = e => {
     if (this.state.followersToggled) {
       this.setState({

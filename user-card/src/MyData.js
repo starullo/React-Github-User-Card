@@ -40,7 +40,7 @@ const MyData = (props) => {
             </MyInfo>
             {props.state.followersToggled && 
             <div style={{display: 'flex', flexWrap: 'wrap', backgroundColor: 'lightskyblue', justifyContent: 'space-around', alignContent: "space-between"}}>
-                {props.state.myFollowers.map(follower=>{
+                {props.state.myFollowersData.map(follower=>{
                     console.log(follower)
                     return (
                         <Follower followerData={follower} key={follower.id} />
