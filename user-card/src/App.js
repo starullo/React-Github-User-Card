@@ -9,7 +9,6 @@ class App extends React.Component {
     super();
     this.state = {
       myData: [],
-      myFollowersUrls: [],
       myFollowers: [],
       followersToggled: false,
     }

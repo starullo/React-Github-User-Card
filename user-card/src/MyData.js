@@ -36,10 +36,10 @@ const MyData = (props) => {
                 <p><TitleSpan>Bio:</TitleSpan> {bio}</p>
                 <p><TitleSpan>Followers:</TitleSpan> {followers}</p>
                 <p><TitleSpan>Following:</TitleSpan> {following}</p>
-                <Button onClick={props.toggleFollowers}>See Followers</Button>
+                <Button onClick={props.toggleFollowers}>{props.state.followersToggled ? 'Hide Followers' : 'See Followers'}</Button>
             </MyInfo>
             {props.state.followersToggled && 
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', flexWrap: 'wrap', backgroundColor: 'lightskyblue', justifyContent: 'space-around', alignContent: "space-between"}}>
                 {props.state.myFollowers.map(follower=>{
                     console.log(follower)
                     return (

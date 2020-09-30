@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const StyledFollower = styled.div`
 width: 30%;
+border: solid 4px darkgray;
+margin: 1% auto;
+
 `
 
 const Follower = (props) => {
