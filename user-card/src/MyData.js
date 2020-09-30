@@ -27,7 +27,7 @@ border-radius: 20px;
 const MyData = (props) => {
     const {avatar_url, html_url, name, location, bio, followers, following} = props.state.myData;
     return (
-        <>
+        <div style={{backgroundColor: 'lightskyblue'}}>
             <MyInfo>
                 <img style={{border: 'solid darkgray 4px'}} height='200' width='200' src={avatar_url} />
                 <h2>{name}</h2>
@@ -48,7 +48,7 @@ const MyData = (props) => {
                 })}
             </div>
             }
-        </>
+        </div>
     )
 }
 
